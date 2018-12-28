@@ -23,13 +23,16 @@ func main() {
 	defer buff.Free()
 
 	// Pass the arguments to the kernel
-
+	
 	// Set the first operand to 1
 	// YOUR CODE HERE
+	krnl.SetMemoryArg(0, 1)
 	// Set the second operand to 2
 	// YOUR CODE HERE
+	krnl.SetMemoryArg(1, 2)
 	// Set the pointer to the output buffer
 	// YOUR CODE HERE
+	krnl.SetMemoryArg(2, buff)
 
 	// Run the FPGA with the supplied arguments. This is the same for all projects.
 	// The arguments ``(1, 1, 1)`` relate to x, y, z co-ordinates and correspond to our current
@@ -46,9 +49,12 @@ func main() {
 
 	// Print the value we got from the FPGA
 	// YOUR CODE HERE
+	fmt.Println("The result from the FPGA is %d\n", ret)
 
 	// Check the result is correct and if not, return an error
 	// YOUR CODE HERE: create an if statment to exit if the value retuned does not equal 3
-	//
-	//
+	if ret != 3 {
+		fmt.Println("Result is wrong")
+		os.Exit(1)
+	}
 }
